@@ -27,6 +27,11 @@ func (wac *Conn) GetProfilePicThumb(jid string) (<-chan string, error) {
 	return wac.writeJson(data)
 }
 
+func (wac *Conn) GetGroupMetadata(jid string) (<-chan string, error) {
+	data := []interface{}{"query", "GroupMetadata", jid}
+	return wac.writeJson(data)
+}
+
 func (wac *Conn) GetStatus(jid string) (<-chan string, error) {
 	data := []interface{}{"query", "Status", jid}
 	return wac.writeJson(data)
@@ -105,8 +110,8 @@ func (wac *Conn) Chats() (*binary.Node, error) {
 	return wac.query("chat", "", "", "", "", "", 0, 0)
 }
 
-func (wac *Conn) ChatsSearch(search string, count, page int) (*binary.Node, error) {
-	return wac.query("chat", "", "", "", "", search, count, page)
+func (wac *Conn) ContactsSearch(search string, count, page int) (*binary.Node, error) {
+	return wac.query("contacts", "", "", "", "", search, count, page)
 }
 
 func (wac *Conn) Read(jid, id string) (<-chan string, error) {
