@@ -1,7 +1,7 @@
 package whatsapp
 
 import (
-	"github.com/Rhymen/go-whatsapp/binary"
+	"github.com/gazandic/go-whatsapp/binary"
 	"strings"
 )
 
