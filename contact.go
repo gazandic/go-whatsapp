@@ -105,6 +105,10 @@ func (wac *Conn) Chats() (*binary.Node, error) {
 	return wac.query("chat", "", "", "", "", "", 0, 0)
 }
 
+func (wac *Conn) ChatsSearch(search string, count, page int) (*binary.Node, error) {
+	return wac.query("chat", "", "", "", "", search, count, page)
+}
+
 func (wac *Conn) Read(jid, id string) (<-chan string, error) {
 	ts := time.Now().Unix()
 	tag := fmt.Sprintf("%d.--%d", ts, wac.msgCount)
